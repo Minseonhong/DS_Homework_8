@@ -193,7 +193,7 @@ int deleteLast(listNode* h) { // 주석에 ?? -> ?? 값 이렇게 되어있으�
 
 	if( h -> llink == h) // 만약 헤더노드 -> llink의 값이 헤더노드이면 지울 노드가 없다는 문장 출력
 	{
-		printf("지울 노드가 없습니다.");
+		printf("지울 노드가 없습니다.\n");
 		return 1;
 	}
 
@@ -212,6 +212,15 @@ int deleteLast(listNode* h) { // 주석에 ?? -> ?? 값 이렇게 되어있으�
  * list 처음에 key에 대한 노드하나를 추가
  */
 int insertFirst(listNode* h, int key) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
+	listNode* node = (listNode*)malloc(sizeof(listNode)); // listNode 포인터 node 메모리 할당
+	node -> key = key; // node -> key에 key의 값 대입
+	node -> rlink = NULL; // node -> rlink 값에 NULL 대입
+	node -> llink = NULL; // node -> llink 값에 NULL 대입
+
+	node -> rlink = h -> rlink; // node -> rlink 값에 헤더노드 -> rlink 값 대입
+	node -> llink = h; // node -> llink 값에 헤더노드 대입
+	h -> rlink -> llink = node; // h -> rlink -> llink 값에 node 대입
+	h -> rlink = node; // 헤더노드 -> rlink 값에 node 대입
 
 
 	return 1;
