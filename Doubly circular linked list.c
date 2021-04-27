@@ -2,6 +2,8 @@
 #include<stdlib.h>
 /* 필요한 헤더파일 추가 */
 
+
+
 typedef struct Node { //원형 리스트 생성을 위한 구조체
 	int key;
 	struct Node* llink;
@@ -100,7 +102,7 @@ int main()
 }
 
 
-int initialize(listNode** h) {
+int initialize(listNode** h) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
 
 	/* headNode가 NULL이 아니면, freeNode를 호출하여 할당된 메모리 모두 해제 */
 	if(*h != NULL)
@@ -115,7 +117,7 @@ int initialize(listNode** h) {
 }
 
 /* 메모리 해제 */
-int freeList(listNode* h){
+int freeList(listNode* h){ // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
 
 	free(h); // listNode 포인터 h 메모리 해제
 
@@ -124,7 +126,7 @@ int freeList(listNode* h){
 
 
 
-void printList(listNode* h) {
+void printList(listNode* h) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
 	int i = 0;
 	listNode* p;
 
@@ -165,12 +167,17 @@ void printList(listNode* h) {
 /**
  * list에 key에 대한 노드하나를 추가
  */
-int insertLast(listNode* h, int key) {
+int insertLast(listNode* h, int key) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
 
 	listNode* node = (listNode*)malloc(sizeof(listNode)); // listNode 포인터 node 메모리 할당
 	node -> key = key; // node -> key에 key의 값 대입(node가 가리키는 key의 값이라고 생각하면 된다)
-	node -> rlink = NULL;
-	node -> llink = NULL;
+	node -> rlink = NULL; // node -> rlink 값에 NULL 대입
+	node -> llink = NULL; // node -> llink 값에 NULL 대입
+
+	node -> rlink = h; // node -> rlink 값에 헤더노드 대입
+	node -> llink = h -> llink; // node -> llink 값에 헤더노드 -> llink 값 대입
+	h -> llink -> rlink = node; // 헤더노드 -> llink -> rlink 값에 node 대입
+	h -> llink = node; // 헤더노드 -> llink 값에 node 대입
 
 	return 1;
 }
@@ -179,7 +186,7 @@ int insertLast(listNode* h, int key) {
 /**
  * list의 마지막 노드 삭제
  */
-int deleteLast(listNode* h) {
+int deleteLast(listNode* h) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
 
 
 	return 1;
@@ -189,7 +196,7 @@ int deleteLast(listNode* h) {
 /**
  * list 처음에 key에 대한 노드하나를 추가
  */
-int insertFirst(listNode* h, int key) {
+int insertFirst(listNode* h, int key) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
 
 
 	return 1;
@@ -198,7 +205,7 @@ int insertFirst(listNode* h, int key) {
 /**
  * list의 첫번째 노드 삭제
  */
-int deleteFirst(listNode* h) {
+int deleteFirst(listNode* h) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
 
 
 	return 1;
@@ -209,7 +216,7 @@ int deleteFirst(listNode* h) {
 /**
  * 리스트의 링크를 역순으로 재 배치
  */
-int invertList(listNode* h) {
+int invertList(listNode* h) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
 
 
 	return 0;
@@ -220,7 +227,7 @@ int invertList(listNode* h) {
 /**
  *  리스트를 검색하여, 입력받은 key보다 큰값이 나오는 노드 바로 앞에 삽입
  **/
-int insertNode(listNode* h, int key) {
+int insertNode(listNode* h, int key) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
 
 	return 0;
 }
@@ -229,7 +236,7 @@ int insertNode(listNode* h, int key) {
 /**
  * list에서 key에 대한 노드 삭제
  */
-int deleteNode(listNode* h, int key) {
+int deleteNode(listNode* h, int key) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
 
 	return 0;
 }
