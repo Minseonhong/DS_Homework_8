@@ -230,7 +230,21 @@ int insertFirst(listNode* h, int key) { // 주석에 ?? -> ?? 값 이렇게 되�
  * list의 첫번째 노드 삭제
  */
 int deleteFirst(listNode* h) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
+	listNode *del = (listNode*)malloc(sizeof(listNode)); // listNode 포인터 변수 del 메모리 할당
+	listNode *p; // listNode 포인터형 변수 p 생성
+	p = h; // p에 헤더노드 대입
 
+	if( h -> rlink == h) // 헤더노드 -> rlink 값이 헤더노드면 지울 노드가 없다는 문장 출력
+	{
+		printf("지울 노드가 없습니다.\n");
+		return 1;
+	}
+
+	del = p -> rlink; // del에 p -> rlink 값 대입
+	p = p -> rlink; // p에 p -> rlink 값 대입
+	p -> rlink -> llink = h; // p -> rlink -> llink 값에 헤더노드 대입
+	h -> rlink = p -> rlink; // 헤더노드 -> rlink 값에 p -> rlink 값 대입
+	free(del); // p -> rlink 값이 들어가 있는 del 메모리 해제
 
 	return 1;
 
