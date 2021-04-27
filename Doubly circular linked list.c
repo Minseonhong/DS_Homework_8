@@ -336,6 +336,37 @@ int insertNode(listNode* h, int key) { // 주석에 ?? -> ?? 값 이렇게 되�
  * list에서 key에 대한 노드 삭제
  */
 int deleteNode(listNode* h, int key) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
+	listNode *del = (listNode*)malloc(sizeof(listNode)); // listnode 포인터 변수 del 메모리 할당
+	listNode *p; // listNode 포인터변수 p 생성
+	p = h; // p에 헤드노드 대입
+
+	if( h -> rlink == h) // 헤더노드 -> rlink 값이 헤더노드면 지울 노드가 없다는 문장 출력
+	{
+		printf("지울 노드가 없습니다.\n");
+		return 1;
+	}
+
+	while(1)
+	{
+		p = p -> rlink; // p에 p -> rlink 값 대입
+
+		if(p->key == key) // p-> key의 값이 key와 같다면
+		{
+			del = p; // del 에 p -> rlink값이 들어가 있는 p 대입
+			p -> llink -> rlink = p -> rlink; // p가 가리키는 llink값이 가리키는 rlink 값에 p -> rlink 값 대입
+			p -> rlink -> llink = p -> llink; // p가 가리키는 llink값이 가리키는 rlink 값에 p -> rlink 값 대입
+
+			free(del); // p의 값이 들어가 있는 del 메모리 해제
+
+			break;
+		}
+		else if(p == h) // p의 값이 헤더노드일 경우 지울 노드가 없다는 문장 출력
+		{
+			printf("지울 노드가 없습니다\n");
+			break;
+		}
+	}
+
 
 	return 0;
 }
