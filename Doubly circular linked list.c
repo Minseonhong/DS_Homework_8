@@ -187,7 +187,22 @@ int insertLast(listNode* h, int key) { // 주석에 ?? -> ?? 값 이렇게 되�
  * list의 마지막 노드 삭제
  */
 int deleteLast(listNode* h) { // 주석에 ?? -> ?? 값 이렇게 되어있으면 ??가 ??를 가리키는 값이라고 생각하면 됩니다.
+	listNode *del = (listNode*)malloc(sizeof(listNode)); // listNode 포인터 변수 del 메모리 할당
+	listNode *p; // listNode 포인터 변수 p 생성
+	p = h; // p에 헤더노드 대입
 
+	if( h -> llink == h) // 만약 헤더노드 -> llink의 값이 헤더노드이면 지울 노드가 없다는 문장 출력
+	{
+		printf("지울 노드가 없습니다.");
+		return 1;
+	}
+
+	del = p -> llink; // del에 p -> llink의 값 대입
+	p = p -> llink; // p에 p -> llink 값 대입
+	p->llink->rlink = h; // p -> llink -> rllink값에 헤더노드 대입
+	h -> llink = p -> llink; // 헤더노드 -> llink 값에 p -> llink 값 대입
+
+	free(del); // p -> llink 값이 들어가 있는 del 메모리 해제
 
 	return 1;
 }
